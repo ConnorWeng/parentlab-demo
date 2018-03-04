@@ -5,6 +5,7 @@
     "version": "0.1",
     "android": {
       "package": "com.example.parentlabdemo"
-    }
+    },
+    "orientation": "portrait"
   }
 }
