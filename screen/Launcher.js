@@ -59,11 +59,9 @@ const styles = StyleSheet.create({
     width: width,
     backgroundColor: Constants.SECONDARY_COLOR,
     paddingBottom: 40,
-    zIndex: -9999,
   },
   buttonContainer: {
     flex: 3,
-    justifyContent: 'center',
   },
   button: {
     justifyContent: 'center',
