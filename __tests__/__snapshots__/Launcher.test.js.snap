@@ -1,0 +1,199 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<View
+  style={
+    Array [
+      Object {
+        "backgroundColor": "white",
+        "flex": 1,
+      },
+      Object {
+        "alignItems": "center",
+        "flexDirection": "column",
+        "justifyContent": "space-between",
+        "paddingTop": 40,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      Object {
+        "flex": 1,
+      }
+    }
+  >
+    <Text
+      accessible={true}
+      allowFontScaling={true}
+      ellipsizeMode="tail"
+      style={
+        Array [
+          Object {
+            "fontSize": 28,
+          },
+          Object {
+            "paddingTop": 40,
+          },
+        ]
+      }
+    >
+      Grow Together!
+    </Text>
+  </View>
+  <View
+    style={
+      Object {
+        "flex": 7,
+        "flexDirection": "column",
+        "height": 667,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "bottom": 0,
+          "position": "absolute",
+        }
+      }
+    >
+      <Image
+        source={
+          Object {
+            "testUri": "../../../resource/ground.png",
+          }
+        }
+        style={
+          Object {
+            "resizeMode": undefined,
+          }
+        }
+      />
+    </View>
+    <Image
+      source={
+        Object {
+          "testUri": "../../../resource/biking.png",
+        }
+      }
+      style={
+        Object {
+          "resizeMode": "contain",
+          "width": 900,
+        }
+      }
+    />
+  </View>
+  <View
+    style={
+      Object {
+        "alignItems": "center",
+        "backgroundColor": "#D9F1F5",
+        "flex": 2.5,
+        "justifyContent": "space-between",
+        "paddingBottom": 40,
+        "width": 750,
+      }
+    }
+  >
+    <View
+      style={
+        Object {
+          "flex": 3,
+        }
+      }
+    >
+      <View
+        accessibilityComponentType={undefined}
+        accessibilityLabel={undefined}
+        accessibilityTraits={undefined}
+        accessible={true}
+        collapsable={undefined}
+        hasTVPreferredFocus={undefined}
+        hitSlop={undefined}
+        isTVSelectable={true}
+        nativeID={undefined}
+        onLayout={undefined}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          Object {
+            "backgroundColor": "#43BCD3",
+            "borderRadius": 20,
+            "height": 42,
+            "justifyContent": "center",
+            "opacity": 1,
+            "paddingLeft": 80,
+            "paddingRight": 80,
+          }
+        }
+        testID={undefined}
+        tvParallaxProperties={undefined}
+      >
+        <Text
+          accessible={true}
+          allowFontScaling={true}
+          ellipsizeMode="tail"
+          style={
+            Object {
+              "color": "#ffffff",
+              "fontSize": 24,
+              "textAlign": "center",
+            }
+          }
+        >
+          Get Started
+        </Text>
+      </View>
+    </View>
+    <View
+      style={
+        Object {
+          "flexDirection": "row",
+        }
+      }
+    >
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "rgba(0, 0, 0, 0.2)",
+            },
+          ]
+        }
+      >
+        By continuing, you agree to our 
+      </Text>
+      <Text
+        accessible={true}
+        allowFontScaling={true}
+        ellipsizeMode="tail"
+        style={
+          Array [
+            Object {
+              "fontSize": 10,
+            },
+            Object {
+              "color": "rgba(0, 0, 0, 0.5)",
+            },
+          ]
+        }
+      >
+        Terms of Use & Privacy Policy
+      </Text>
+    </View>
+  </View>
+</View>
+`;
