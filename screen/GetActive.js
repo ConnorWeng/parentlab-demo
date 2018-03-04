@@ -22,14 +22,14 @@ class GetActive extends Component {
     if (!this.props.content.get_active) {
       this.props.getContent();
     }
-    soundObject.setOnPlaybackStatusUpdate(status => {
+    this.soundObject.setOnPlaybackStatusUpdate(status => {
       if (!isNaN(status.positionMillis) && !isNaN(status.durationMillis)) {
         this.setState({ playTime: formatPlayTime(status) });
       }
     });
     try {
-      await soundObject.loadAsync({ uri: 'http://mp3-128.cdn107.com/music/02/38/67/0238670266.mp3' });
-      await soundObject.playAsync();
+      await this.soundObject.loadAsync({ uri: 'http://mp3-128.cdn107.com/music/02/38/67/0238670266.mp3' });
+      await this.soundObject.playAsync();
     } catch (error) {
       console.log('A play error occurred.', error)
     }
