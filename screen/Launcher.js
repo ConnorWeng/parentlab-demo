@@ -11,21 +11,26 @@ export default class Launcher extends Component {
 
   render() {
     return (
-      <SafeAreaView style={[ CommonStyles.container, styles.container ]}>
+      <View style={[ CommonStyles.container, styles.container ]}>
         <View style={ styles.titleContainer }>
           <Text style={[ CommonStyles.largeFont, styles.title ]}>Grow Together!</Text>
         </View>
         <View style={ styles.imageContainer }>
-          <Image style={styles.biking} source={require('../resource/biking.png')}/>
+          <View style={ styles.groundContainer }>
+            <Image style={ styles.ground } source={ require('../resource/ground.png') }/>
+          </View>
+          <Image style={ styles.biking } source={ require('../resource/biking.png') }/>
         </View>
         <View style={ styles.footerContainer }>
-          <PrimaryButton style={ styles.button } label="Get Started" onPress={() => this.props.navigation.navigate('GetActive')}/>
-            <View style={ styles.copyrightsContainer }>
-              <Text style={[ CommonStyles.tinyFont, styles.copyrights ]}>By continuing, you agree to our </Text>
-              <Text style={[ CommonStyles.tinyFont, styles.terms ]}>Terms of Use & Privacy Policy</Text>
-            </View>
+          <View style={ styles.buttonContainer }>
+            <PrimaryButton style={ styles.button } label="Get Started" onPress={() => this.props.navigation.navigate('GetActive')}/>
+          </View>
+          <View style={ styles.copyrightsContainer }>
+            <Text style={[ CommonStyles.tinyFont, styles.copyrights ]}>By continuing, you agree to our </Text>
+            <Text style={[ CommonStyles.tinyFont, styles.terms ]}>Terms of Use & Privacy Policy</Text>
+          </View>
         </View>
-      </SafeAreaView>
+      </View>
     );
   }
 }
@@ -37,6 +42,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'center',
+    paddingTop: 40,
   },
   titleContainer: {
     flex: 1,
@@ -46,15 +52,18 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     height: height/2,
   },
-  buttonContainer: {
-    flex: 1,
-    width: width,
-  },
   footerContainer: {
-    flex: 2,
+    flex: 2.5,
     alignItems: 'center',
     justifyContent: 'space-between',
     width: width,
+    backgroundColor: Constants.SECONDARY_COLOR,
+    paddingBottom: 40,
+    zIndex: -9999,
+  },
+  buttonContainer: {
+    flex: 3,
+    justifyContent: 'center',
   },
   button: {
     justifyContent: 'center',
@@ -62,6 +71,13 @@ const styles = StyleSheet.create({
   biking: {
     width: width * 1.2,
     resizeMode: Image.resizeMode.contain,
+  },
+  groundContainer: {
+    position: 'absolute',
+    bottom: 0,
+  },
+  ground: {
+    resizeMode: Image.resizeMode.scratch,
   },
   title: {
     paddingTop: 40,
