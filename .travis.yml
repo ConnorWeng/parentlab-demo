@@ -1,0 +1,11 @@
+language: node_js
+node_js:
+  - "node"
+before_install:
+  - npm install -g exp
+cache:
+  directories:
+    - node_modules
+    - $HOME/.npm
+script:
+  - npm test && exp login -u $EXPO_USERNAME -p $EXPO_PASSWORD --non-interactive && exp build:android
