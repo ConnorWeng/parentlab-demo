@@ -2,8 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-native';
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
-
-const {height, width} = Dimensions.get('window');
+import { Constants, CommonStyles } from '../Constants';
 
 class GetActive extends Component {
   static navigationOptions = {
@@ -19,9 +18,9 @@ class GetActive extends Component {
   render() {
     if (this.props.content.get_active) {
       return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={ CommonStyles.container }>
           <FlatList
-             style={{ flex: 1, backgroundColor: 'white', paddingRight: 20, paddingLeft: 20, }}
+             style={[ CommonStyles.container, CommonStyles.flatList ]}
              renderItem={ this.renderItem.bind(this) }
              data={ this.props.content.get_active }
              keyExtractor={ (item, index) => item.content_id }
@@ -30,7 +29,7 @@ class GetActive extends Component {
       );
     } else {
       return (
-        <SafeAreaView style={{ alignItems: 'center' }}>
+        <SafeAreaView style={ CommonStyles.container, CommonStyles.center }>
           <Text>Loading...</Text>
         </SafeAreaView>
       );
@@ -44,34 +43,48 @@ class GetActive extends Component {
     article.steps.forEach((step, index) => {
       steps.push(
         <View key={ contentId + index }>
-          <View style={{ alignItems: 'center', padding: 20 }}>
-            <Text>STEP {index}</Text>
+          <View style={[ CommonStyles.center, CommonStyles.padding20 ]}>
+            <Text style={{ color: Constants.PRIMARY_COLOR }}>STEP {index}</Text>
           </View>
           <Text>{step}</Text>
         </View>
       );
     });
     return (
-      <View style={{ flex: 1, flexDirection: 'column', alignItems: 'center', paddingBottom: 40 }}>
+      <View style={[ CommonStyles.container, styles.articleContainer ]}>
         <View>
-          <Image style={{ width: width/2, height: width/2, borderRadius: width/4 }} source={{ uri: 'http:' + article.image.url }} />
+          <Image style={ styles.articleImage } source={{ uri: 'http:' + article.image.url }} />
         </View>
-        <View style={{ paddingTop: 20 }}>
+        <View style={ styles.textContainer }>
           <Text style={{ fontSize: 28 }}>{ article.name }</Text>
         </View>
         {
           article.instruction ?
-            <View style={{ paddingTop: 20 }}>
+            <View style={ styles.textContainer }>
               <Text>{ article.instruction }</Text>
             </View> : null
         }
-        <View style={{ paddingTop: 20 }}>
+        <View style={ styles.textContainer }>
           {steps}
         </View>
       </View>
     );
   }
 }
+
+const {height, width} = Dimensions.get('window');
+
+const styles = StyleSheet.create({
+  textContainer: {
+    paddingTop: 20,
+  },
+  articleContainer: {
+    flexDirection: 'column', alignItems: 'center', paddingBottom: 40
+  },
+  articleImage: {
+    width: width/2, height: width/2, borderRadius: width/4
+  },
+});
 
 const actions = (dispatch) => {
   return {
