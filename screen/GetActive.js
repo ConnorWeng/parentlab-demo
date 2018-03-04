@@ -56,7 +56,7 @@ class GetActive extends Component {
           <Image style={ styles.articleImage } source={{ uri: 'http:' + article.image.url }} />
         </View>
         <View style={ styles.textContainer }>
-          <Text style={{ fontSize: 28 }}>{ article.name }</Text>
+          <Text style={ CommonStyles.largeFont }>{ article.name }</Text>
         </View>
         {
           article.instruction ?

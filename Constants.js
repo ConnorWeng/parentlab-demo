@@ -20,4 +20,10 @@ export const CommonStyles = StyleSheet.create({
   padding20: {
     padding: 20,
   },
+  largeFont: {
+    fontSize: 28,
+  },
+  tinyFont: {
+    fontSize: 10,
+  },
 });
