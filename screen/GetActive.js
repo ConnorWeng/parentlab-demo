@@ -3,15 +3,35 @@ import { StyleSheet, Text, View, Image, Dimensions, FlatList } from 'react-nativ
 import { SafeAreaView } from 'react-navigation';
 import { connect } from 'react-redux';
 import { Constants, CommonStyles } from '../Constants';
+import { formatPlayTime } from '../util/PlayTime';
 
 class GetActive extends Component {
   static navigationOptions = {
     title: 'Get Active',
   }
 
-  componentDidMount() {
+  constructor(props) {
+    super(props);
+    this.state = {
+      playTime: '00:00/00:00',
+    };
+    this.soundObject = new Expo.Audio.Sound();
+  }
+
+  async componentDidMount() {
     if (!this.props.content.get_active) {
       this.props.getContent();
+    }
+    soundObject.setOnPlaybackStatusUpdate(status => {
+      if (!isNaN(status.positionMillis) && !isNaN(status.durationMillis)) {
+        this.setState({ playTime: formatPlayTime(status) });
+      }
+    });
+    try {
+      await soundObject.loadAsync({ uri: 'http://mp3-128.cdn107.com/music/02/38/67/0238670266.mp3' });
+      await soundObject.playAsync();
+    } catch (error) {
+      console.log('A play error occurred.', error)
     }
   }
 
@@ -24,7 +44,10 @@ class GetActive extends Component {
              renderItem={ this.renderItem.bind(this) }
              data={ this.props.content.get_active }
              keyExtractor={ (item, index) => item.content_id }
-            />
+          />
+          <View style={ CommonStyles.center, { alignItems: 'center', justifyContent: 'center', position: 'absolute', width: 100, height: 40, borderRadius: 20, left: 20, bottom: 20, backgroundColor: Constants.SECONDARY_COLOR }}>
+            <Text>{ this.state.playTime }</Text>
+          </View>
         </SafeAreaView>
       );
     } else {
@@ -94,7 +117,7 @@ const actions = (dispatch) => {
           'authorization': 'Token token=ZVKgYbjoOxoM9fvuhDvQOAtt',
           'content-type': 'application/json',
         }
-      }).then(response => response.json(), error => console.log('An error occurred.', error))
+      }).then(response => response.json(), error => console.log('A fetch error occurred.', error))
         .then(json => {
           dispatch({ type: 'SET_CONTENT', content: json });});
     },
