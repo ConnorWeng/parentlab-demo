@@ -35,6 +35,11 @@ class GetActive extends Component {
     }
   }
 
+  async componentWillUnmount() {
+    this.soundObject.setOnPlaybackStatusUpdate(null);
+    await this.soundObject.stopAsync();
+  }
+
   render() {
     if (this.props.content.get_active) {
       return (
